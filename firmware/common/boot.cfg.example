@@ -1,0 +1,21 @@
+# UEFI: place as EFI/MOS/BOOT.CFG on the ESP (see firmware/efi/mosboot.c).
+# BIOS Stage2 scans partition tables only; this file is for UEFI chain loading.
+
+[boot]
+timeout=5
+default=0
+
+[entry0]
+title=Windows bootmgr
+kind=uefi_chain
+path=\EFI\Microsoft\Boot\bootmgfw.efi
+
+[entry1]
+title=Shim
+kind=uefi_chain
+path=\EFI\ubuntu\shimx64.efi
+
+[entry2]
+title=Fallback BOOTX64
+kind=uefi_chain
+path=\EFI\BOOT\BOOTX64.EFI

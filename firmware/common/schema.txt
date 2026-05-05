@@ -1,0 +1,14 @@
+boot.cfg schema (minimal INI-like)
+==================================
+
+[boot]
+  timeout=<seconds>   optional, default 5
+  default=<index>     optional, default entry index
+
+[entryN]
+  title=<string>
+  kind=uefi_chain
+     path=\EFI\...\file.efi   (backslashes; relative to ESP root)
+
+BIOS Stage2 does not parse this file in-ROM; it scans MBR/GPT and chains VBR.
+UEFI chainboot parses this file from the ESP (loader path configurable).
